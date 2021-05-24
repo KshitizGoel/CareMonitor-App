@@ -1,6 +1,7 @@
 import 'dart:async';
-
 import 'package:boilerplate/constants/assets.dart';
+import 'package:boilerplate/constants/strings.dart';
+import 'package:boilerplate/ui/dashboard/dashboard_widget/widgets.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -31,13 +32,25 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ListView(
         children: [
           Stack(
             children: [
               carouselImageWidget(),
-              _pointsBarWidget()
+              _pointsBarWidget(),
+              _discountCircularWidget()
             ],
+          ),
+          _transportationWidget(),
+          Container(
+            height: 10,
+            color: Colors.grey[100],
+          ),
+          _upcomingTripWidget(),
+          Container(
+            height: 10,
+            color: Colors.grey[100],
           ),
         ],
       ),
@@ -68,7 +81,7 @@ class _DashboardState extends State<Dashboard> {
                     InkWell(
                       onTap: () {},
                       child: ClipRRect(
-                         child: Image.asset(
+                        child: Image.asset(
                           Assets.travel_1,
                           fit: BoxFit.cover,
                         ),
@@ -77,7 +90,7 @@ class _DashboardState extends State<Dashboard> {
                     InkWell(
                       onTap: () {},
                       child: ClipRRect(
-                         child: Image.asset(
+                        child: Image.asset(
                           Assets.travel_2,
                           fit: BoxFit.cover,
                         ),
@@ -86,7 +99,7 @@ class _DashboardState extends State<Dashboard> {
                     InkWell(
                       onTap: () {},
                       child: ClipRRect(
-                         child: Image.asset(
+                        child: Image.asset(
                           Assets.travel_3,
                           fit: BoxFit.cover,
                         ),
@@ -95,7 +108,7 @@ class _DashboardState extends State<Dashboard> {
                     InkWell(
                       onTap: () {},
                       child: ClipRRect(
-                         child: Image.asset(
+                        child: Image.asset(
                           Assets.travel_4,
                           fit: BoxFit.cover,
                         ),
@@ -120,23 +133,165 @@ class _DashboardState extends State<Dashboard> {
 
   Widget _indicator(bool isActive) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
-      curve: Curves.easeInToLinear,
-      margin: EdgeInsets.symmetric(horizontal: 4.0),
+      duration: Duration(milliseconds: 400),
+      curve: Curves.bounceInOut,
+      margin: EdgeInsets.symmetric(horizontal: 2.0),
       height: 8.0,
       width: 8,
       decoration: BoxDecoration(
-        color: isActive ? Colors.white : Colors.white60,
+        color: isActive ? Colors.white : Colors.black,
         borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
     );
   }
 
-  Widget _pointsBar(){
-    return Container(
-      color: Colors.white,
-
-    )
+  Widget _pointsBarWidget() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0, top: 20),
+      child: Container(
+        width: 110,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Icon(
+                Icons.monetization_on,
+                size: 15,
+                color: Colors.yellow[800]!.withOpacity(0.6),
+              ),
+              Text(
+                "400 Points",
+                style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.yellow[900]!.withOpacity(0.6),
+                    fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
+  Widget _discountCircularWidget() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10.0, top: 20),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50), color: Colors.white),
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Icon(
+              Icons.verified,
+              color: Colors.blue.withOpacity(0.5),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _transportationWidget() {
+    return Container(
+      height: 170,
+      child: Column(
+        children: [
+          _covidTab(),
+          _locomotiveBar(),
+        ],
+      ),
+    );
+  }
+
+  Widget _covidTab() {
+    return Padding(
+      padding: EdgeInsets.all(20),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.yellow[700]!.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Icon(
+                Icons.emoji_emotions_outlined,
+                color: Colors.yellow[900],
+              ),
+              Text(
+                Strings.covidText,
+                style: TextStyle(color: Colors.yellow[900]),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _locomotiveBar() {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          LocomotiveWidget(
+              icon: Icons.airplanemode_on_rounded,
+              colors: Colors.orange[800]!.withOpacity(0.70),
+              type: "Plane"),
+          LocomotiveWidget(
+              icon: Icons.directions_railway_outlined,
+              colors: Colors.yellow[800]!.withOpacity(0.70),
+              type: "train"),
+          LocomotiveWidget(
+              icon: Icons.hotel,
+              colors: Colors.blue[700]!.withOpacity(0.70),
+              type: "Hotels"),
+          LocomotiveWidget(
+              icon: Icons.directions_bus,
+              colors: Colors.green[700]!.withOpacity(0.70),
+              type: "Bus"),
+          LocomotiveWidget(
+              icon: Icons.more,
+              colors: Colors.blueGrey[700]!.withOpacity(0.70),
+              type: "More"),
+        ],
+      ),
+    );
+  }
+
+  Widget _upcomingTripWidget() {
+    return Container(
+      height: 200,
+      decoration: BoxDecoration(color: Colors.white),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
+        child: Container(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top : 10.0, left: 5),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Upcoming Trip",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
