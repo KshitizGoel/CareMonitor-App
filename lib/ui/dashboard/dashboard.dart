@@ -2,6 +2,9 @@ import 'dart:async';
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/strings.dart';
 import 'package:boilerplate/ui/dashboard/dashboard_widget/widgets.dart';
+import 'package:boilerplate/ui/empty_screen/empty.dart';
+import 'package:boilerplate/ui/find_flights/find_flights.dart';
+import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -48,6 +51,13 @@ class _DashboardState extends State<Dashboard> {
             color: Colors.grey[100],
           ),
           _upcomingTripWidget(),
+          _tripScheduleBar(),
+          Container(
+            height: 10,
+            color: Colors.grey[100],
+          ),
+          _topRecommendationsWidget(),
+          _destinationSlideBar(),
           Container(
             height: 10,
             color: Colors.grey[100],
@@ -79,7 +89,12 @@ class _DashboardState extends State<Dashboard> {
                   },
                   children: <Widget>[
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return FindFlights();
+                        }));
+                      },
                       child: ClipRRect(
                         child: Image.asset(
                           Assets.travel_1,
@@ -88,7 +103,12 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return FindFlights();
+                        }));
+                      },
                       child: ClipRRect(
                         child: Image.asset(
                           Assets.travel_2,
@@ -97,7 +117,12 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return FindFlights();
+                        }));
+                      },
                       child: ClipRRect(
                         child: Image.asset(
                           Assets.travel_3,
@@ -106,7 +131,12 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return FindFlights();
+                        }));
+                      },
                       child: ClipRRect(
                         child: Image.asset(
                           Assets.travel_4,
@@ -242,26 +272,61 @@ class _DashboardState extends State<Dashboard> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          LocomotiveWidget(
-              icon: Icons.airplanemode_on_rounded,
-              colors: Colors.orange[800]!.withOpacity(0.70),
-              type: "Plane"),
-          LocomotiveWidget(
-              icon: Icons.directions_railway_outlined,
-              colors: Colors.yellow[800]!.withOpacity(0.70),
-              type: "train"),
-          LocomotiveWidget(
-              icon: Icons.hotel,
-              colors: Colors.blue[700]!.withOpacity(0.70),
-              type: "Hotels"),
-          LocomotiveWidget(
-              icon: Icons.directions_bus,
-              colors: Colors.green[700]!.withOpacity(0.70),
-              type: "Bus"),
-          LocomotiveWidget(
-              icon: Icons.more,
-              colors: Colors.blueGrey[700]!.withOpacity(0.70),
-              type: "More"),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return FindFlights();
+              }));
+            },
+            child: LocomotiveWidget(
+                icon: Icons.airplanemode_on_rounded,
+                colors: Colors.orange[800]!.withOpacity(0.70),
+                type: "Plane"),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return FindFlights();
+              }));
+            },
+            child: LocomotiveWidget(
+                icon: Icons.directions_railway_outlined,
+                colors: Colors.yellow[800]!.withOpacity(0.70),
+                type: "train"),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return FindFlights();
+              }));
+            },
+            child: LocomotiveWidget(
+                icon: Icons.hotel,
+                colors: Colors.blue[700]!.withOpacity(0.70),
+                type: "Hotels"),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return FindFlights();
+              }));
+            },
+            child: LocomotiveWidget(
+                icon: Icons.directions_bus,
+                colors: Colors.green[700]!.withOpacity(0.70),
+                type: "Bus"),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return FindFlights();
+              }));
+            },
+            child: LocomotiveWidget(
+                icon: Icons.more,
+                colors: Colors.blueGrey[700]!.withOpacity(0.70),
+                type: "More"),
+          ),
         ],
       ),
     );
@@ -269,28 +334,169 @@ class _DashboardState extends State<Dashboard> {
 
   Widget _upcomingTripWidget() {
     return Container(
-      height: 200,
+      height: 70,
       decoration: BoxDecoration(color: Colors.white),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
-        child: Container(
-          height: 70,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top : 10.0, left: 5),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Upcoming Trip",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                  ),
-                ),
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 20),
+              child: Text(
+                "Upcoming Trip",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
-            ],
+            ),
           ),
-        ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 5, left: 20),
+              child: Text(
+                "You have 2 upcoming tickets",
+                style: TextStyle(color: Colors.grey, fontSize: 13),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _tripScheduleBar() {
+    return Container(
+      height: 120,
+      child: ListView(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10.0, left: 25, right: 25),
+            child: Container(
+              width: 250,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border:
+                      Border.all(color: Colors.grey[400]!.withOpacity(0.70))),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _topRecommendationsWidget() {
+    return Container(
+      height: 70,
+      decoration: BoxDecoration(color: Colors.white),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
+              child: Text(
+                "Top Destinations",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                "Recommended place for you",
+                style: TextStyle(color: Colors.grey, fontSize: 13),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _destinationSlideBar() {
+    return Container(
+      height: 200,
+      child: ListView(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          Container(
+            width: 10,
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return FindFlights();
+              }));
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                Assets.top_destinations,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            width: 10,
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return FindFlights();
+              }));
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                Assets.top_destinations,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            width: 10,
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return FindFlights();
+              }));
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                Assets.top_destinations,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            width: 10,
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return FindFlights();
+              }));
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                Assets.top_destinations,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            width: 10,
+          ),
+        ],
       ),
     );
   }

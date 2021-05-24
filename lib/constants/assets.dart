@@ -13,5 +13,7 @@ class Assets {
   static const String travel_3 = "assets/images/carousel_images_3.jpg";
   static const String travel_4 = "assets/images/carousel_images_4.jpg";
 
+  static const String top_destinations = "assets/images/top_destination.jpeg";
+
 
 }
