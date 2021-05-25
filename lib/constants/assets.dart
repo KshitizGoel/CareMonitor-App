@@ -2,10 +2,10 @@ class Assets {
   Assets._();
 
   // splash screen assets
-  static const String appLogo = "assets/icons/ic_appicon.png";
+  static const String appLogo = "assets/images/img_login.png";
 
   // login screen assets
-  static const String carBackground = "assets/images/img_login.jpg";
+  static const String carBackground = "assets/images/img_login.png";
 
   // carousel image assets
   static const String travel_1 = "assets/images/carousel_images_1.jpg";

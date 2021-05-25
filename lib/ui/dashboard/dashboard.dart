@@ -2,9 +2,7 @@ import 'dart:async';
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/strings.dart';
 import 'package:boilerplate/ui/dashboard/dashboard_widget/widgets.dart';
-import 'package:boilerplate/ui/empty_screen/empty.dart';
 import 'package:boilerplate/ui/find_flights/find_flights.dart';
-import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
