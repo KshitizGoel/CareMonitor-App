@@ -38,7 +38,8 @@ class _FindFlightsState extends State<FindFlights> {
               _tabBar(),
             ],
           ),
-          _bottomButton(_width),
+          Align(
+              alignment: Alignment.bottomCenter, child: _bottomButton(_width)),
         ],
       ),
     );
@@ -90,25 +91,22 @@ class _FindFlightsState extends State<FindFlights> {
 
   Widget _bottomButton(double _width) {
     return InkWell(
-      onTap: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (context){
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
           return FlightDetails();
         }));
       },
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
-          width: _width,
-          height: 60,
-          decoration: BoxDecoration(
-            color: Colors.teal.withOpacity(0.70),
-          ),
-          child: Center(
-            child: Text(
-              "Search Flight",
-              style: TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
-            ),
+      child: Container(
+        width: _width,
+        height: 60,
+        decoration: BoxDecoration(
+          color: Colors.teal.withOpacity(0.70),
+        ),
+        child: Center(
+          child: Text(
+            "Search Flight",
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
           ),
         ),
       ),
@@ -119,26 +117,25 @@ class _FindFlightsState extends State<FindFlights> {
     return DefaultTabController(
         length: 2, // length of tabs
         initialIndex: 1,
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Container(
-                child: TabBar(
-                  labelColor: Colors.black,
-                  labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                  indicatorWeight: 3,
-                  indicatorColor: Colors.green[300]!.withOpacity(0.70),
-                  unselectedLabelColor: Colors.grey,
-                  tabs: [
-                    Tab(text: 'One Way'),
-                    Tab(text: 'Round Trip'),
-                  ],
-                ),
-              ),
-              Container(
-                  height:
-                      MediaQuery.of(context).size.height, //height of TabBarView
-                  child: TabBarView(children: <Widget>[TabBarPage(), TabBarPage()]))
-            ]));
+        child:
+            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: <
+                Widget>[
+          Container(
+            child: TabBar(
+              labelColor: Colors.black,
+              labelStyle: TextStyle(fontWeight: FontWeight.bold),
+              indicatorWeight: 3,
+              indicatorColor: Colors.green[300]!.withOpacity(0.70),
+              unselectedLabelColor: Colors.grey,
+              tabs: [
+                Tab(text: 'One Way'),
+                Tab(text: 'Round Trip'),
+              ],
+            ),
+          ),
+          Container(
+              height: MediaQuery.of(context).size.height, //height of TabBarView
+              child: TabBarView(children: <Widget>[TabBarPage(), TabBarPage()]))
+        ]));
   }
 }

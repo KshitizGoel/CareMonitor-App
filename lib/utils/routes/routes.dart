@@ -1,3 +1,4 @@
+import 'package:boilerplate/ui/dashboard/dashboard.dart';
 import 'package:boilerplate/ui/find_flights/find_flights.dart';
 import 'package:boilerplate/ui/home/home.dart';
 import 'package:boilerplate/ui/login/login.dart';
@@ -11,12 +12,14 @@ class Routes {
   static const String splash = '/splash';
   static const String login = '/login';
   static const String home = '/home';
+  static const String dashboard = '/dashboard';
   static const String findFlights = '/findFlights';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
     login: (BuildContext context) => LoginScreen(),
     home: (BuildContext context) => HomeScreen(),
+    dashboard: (BuildContext context) => Dashboard(),
     findFlights: (BuildContext context) => FindFlights(),
   };
 }
