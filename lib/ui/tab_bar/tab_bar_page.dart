@@ -31,6 +31,7 @@ class _TabBarPageState extends State<TabBarPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
+        height: 500,
         child: Column(
           children: [
             Container(

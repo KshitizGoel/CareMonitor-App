@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/strings.dart';
 import 'package:boilerplate/ui/dashboard/dashboard_widget/widgets.dart';
+import 'package:boilerplate/ui/dashboard/scheduled_trip_widget/scheduled_trip.dart';
 import 'package:boilerplate/ui/find_flights/find_flights.dart';
 import 'package:flutter/material.dart';
 
@@ -363,20 +364,20 @@ class _DashboardState extends State<Dashboard> {
 
   Widget _tripScheduleBar() {
     return Container(
-      height: 120,
+      height: 150,
       child: ListView(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10.0, left: 25, right: 25),
-            child: Container(
-              width: 250,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  border:
-                      Border.all(color: Colors.grey[400]!.withOpacity(0.70))),
-            ),
+          ScheduledTrip(
+            icon: Icons.train,
+            locomotive: " Train",
+            color: Colors.yellow[800]!.withOpacity(0.90),
+          ),
+          ScheduledTrip(
+            icon: Icons.flight_takeoff,
+            locomotive: " Plane",
+            color: Colors.orange[800]!.withOpacity(0.90),
           ),
         ],
       ),

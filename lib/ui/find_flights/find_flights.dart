@@ -134,7 +134,7 @@ class _FindFlightsState extends State<FindFlights> {
             ),
           ),
           Container(
-              height: MediaQuery.of(context).size.height, //height of TabBarView
+              height: 500, //height of TabBarView
               child: TabBarView(children: <Widget>[TabBarPage(), TabBarPage()]))
         ]));
   }
