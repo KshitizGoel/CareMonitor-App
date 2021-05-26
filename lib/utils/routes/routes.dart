@@ -1,6 +1,7 @@
 import 'package:boilerplate/ui/dashboard/dashboard.dart';
 import 'package:boilerplate/ui/find_flights/find_flights.dart';
 import 'package:boilerplate/ui/home/home.dart';
+import 'package:boilerplate/ui/landing/landing.dart';
 import 'package:boilerplate/ui/login/login.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class Routes {
     splash: (BuildContext context) => SplashScreen(),
     login: (BuildContext context) => LoginScreen(),
     home: (BuildContext context) => HomeScreen(),
-    dashboard: (BuildContext context) => Dashboard(),
+    dashboard: (BuildContext context) => Landing(0),
     findFlights: (BuildContext context) => FindFlights(),
   };
 }

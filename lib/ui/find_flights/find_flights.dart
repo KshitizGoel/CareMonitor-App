@@ -36,6 +36,7 @@ class _FindFlightsState extends State<FindFlights> {
                 height: 30,
               ),
               _tabBar(),
+              Container(height: 65,)
             ],
           ),
           Align(
