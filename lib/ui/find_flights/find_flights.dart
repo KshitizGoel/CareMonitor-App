@@ -100,7 +100,7 @@ class _FindFlightsState extends State<FindFlights> {
         width: _width,
         height: 60,
         decoration: BoxDecoration(
-          color: Colors.teal.withOpacity(0.70),
+          color: Colors.teal,
         ),
         child: Center(
           child: Text(

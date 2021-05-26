@@ -10,7 +10,7 @@ class FilterWidget extends StatelessWidget {
     final _width = MediaQuery.of(context).size.width;
 
     return Container(
-      width: _width / 2.43,
+      width: _width / 2.417,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -19,13 +19,13 @@ class FilterWidget extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 13),
           ),
-           IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.arrow_drop_down_sharp,
-                color: Colors.grey[700],
-              ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.arrow_drop_down_sharp,
+              color: Colors.grey[700],
             ),
+          ),
         ],
       ),
     );

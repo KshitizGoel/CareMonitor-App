@@ -7,6 +7,9 @@ class Assets {
   // login screen assets
   static const String carBackground = "assets/images/img_login.png";
 
+  // Airlines logo
+  static const String airlinesLogo = "assets/images/airlines_logo.png";
+
   // carousel image assets
   static const String travel_1 = "assets/images/carousel_images_1.jpg";
   static const String travel_2 = "assets/images/carousel_images_2.png";

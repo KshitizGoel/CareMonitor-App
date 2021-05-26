@@ -1,3 +1,4 @@
+import 'package:boilerplate/ui/flight_details/details_widget/journey_details.dart';
 import 'package:boilerplate/ui/flight_details/filter_widget/filter_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +17,33 @@ class _FlightDetailsState extends State<FlightDetails> {
           _flightDetailWidget(),
           _filterContainer(),
           Container(
-            height: 10,
+            height: 20,
             color: Colors.grey[100]!.withOpacity(0.70),
-          )
+          ),
+          JourneyDetails(
+              airlinesName: "Emirates Airlines",
+              airlinesCode: "EMR420",
+              transitTime: "4 Hrs 20 Min",
+              departureTime: "4:20 PM",
+              landingTime: "9:06 PM",
+              departureDate: "May 26, 2021",
+              landingDate: "May 27 , 2021"),
+          JourneyDetails(
+              airlinesName: "Emirates Airlines",
+              airlinesCode: "EMR420",
+              transitTime: "4 Hrs 20 Min",
+              departureTime: "4:20 PM",
+              landingTime: "9:06 PM",
+              departureDate: "May 26, 2021",
+              landingDate: "May 27 , 2021"),
+          JourneyDetails(
+              airlinesName: "Emirates Airlines",
+              airlinesCode: "EMR420",
+              transitTime: "4 Hrs 20 Min",
+              departureTime: "4:20 PM",
+              landingTime: "9:06 PM",
+              departureDate: "May 26, 2021",
+              landingDate: "May 27 , 2021"),
         ],
       ),
     );
