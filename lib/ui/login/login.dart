@@ -115,7 +115,6 @@ class _LoginScreenState extends State<LoginScreen> {
           children: <Widget>[
             AppIconWidget(image: "assets/images/img_login.png"),
             SizedBox(height: 24.0),
-
             Center(
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -143,7 +142,6 @@ class _LoginScreenState extends State<LoginScreen> {
       builder: (context) {
         return TextFieldWidget(
           hint: "abc@xyz.com",
-          inputType: TextInputType.emailAddress,
           icon: Icons.person,
           iconColor: _themeStore.darkMode ? Colors.white70 : Colors.black54,
           textController: _userEmailController,
@@ -223,7 +221,6 @@ class _LoginScreenState extends State<LoginScreen> {
     Future.delayed(Duration(milliseconds: 0), () {
       Navigator.of(context).pushNamedAndRemoveUntil(
           Routes.dashboard, (Route<dynamic> route) => false);
-
     });
 
     return Container();

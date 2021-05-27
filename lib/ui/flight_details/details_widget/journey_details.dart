@@ -10,6 +10,8 @@ class JourneyDetails extends StatelessWidget {
       departureDate,
       landingDate;
 
+
+
   JourneyDetails({
     required this.airlinesName,
     required this.airlinesCode,
