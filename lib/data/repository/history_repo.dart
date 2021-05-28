@@ -14,8 +14,6 @@ class HistoryRepo {
   Future<dynamic> gettingFlightHistory() async {
     int count = await _journeyDatasource.count();
 
-    print("Here is bookings Count " + count.toString());
-
     return await _historyApi.getFlightHistory().then((value) {
       return value;
     }).catchError((onError) {
