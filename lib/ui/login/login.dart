@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildLeftSide() {
     return SizedBox.expand(
       child: Image.asset(
-        Assets.carBackground,
+        Assets.appLogo,
         fit: BoxFit.cover,
       ),
     );
@@ -113,7 +113,19 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            AppIconWidget(image: 'assets/icons/ic_appicon.png'),
+            AppIconWidget(image: "assets/images/img_login.png"),
+            SizedBox(height: 24.0),
+            Center(
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Please enter any sample Email ID and Password to continue !",
+                style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.bold),
+              ),
+            )),
             SizedBox(height: 24.0),
             _buildUserIdField(),
             _buildPasswordField(),
@@ -129,8 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Observer(
       builder: (context) {
         return TextFieldWidget(
-          hint: AppLocalizations.of(context).translate('login_et_user_email'),
-          inputType: TextInputType.emailAddress,
+          hint: "abc@xyz.com",
           icon: Icons.person,
           iconColor: _themeStore.darkMode ? Colors.white70 : Colors.black54,
           textController: _userEmailController,
@@ -209,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     Future.delayed(Duration(milliseconds: 0), () {
       Navigator.of(context).pushNamedAndRemoveUntil(
-          Routes.home, (Route<dynamic> route) => false);
+          Routes.dashboard, (Route<dynamic> route) => false);
     });
 
     return Container();

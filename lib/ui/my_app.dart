@@ -1,8 +1,11 @@
 import 'package:boilerplate/constants/app_theme.dart';
 import 'package:boilerplate/constants/strings.dart';
 import 'package:boilerplate/data/repository.dart';
+import 'package:boilerplate/data/repository/history_repo.dart';
 import 'package:boilerplate/di/components/injection.dart';
+import 'package:boilerplate/stores/flight/flight_store.dart';
 import 'package:boilerplate/ui/dashboard/dashboard.dart';
+import 'package:boilerplate/ui/landing/landing.dart';
 import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/stores/language/language_store.dart';
 import 'package:boilerplate/stores/post/post_store.dart';
@@ -21,6 +24,7 @@ class MyApp extends StatelessWidget {
 
   final ThemeStore _themeStore = ThemeStore(getIt<Repository>());
   final PostStore _postStore = PostStore(getIt<Repository>());
+  final FlightStore _flightStore = FlightStore(getIt<HistoryRepo>());
   final LanguageStore _languageStore = LanguageStore(getIt<Repository>());
   final UserStore _userStore = UserStore(getIt<Repository>());
 
@@ -30,6 +34,7 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider<ThemeStore>(create: (_) => _themeStore),
         Provider<PostStore>(create: (_) => _postStore),
+        Provider<FlightStore>(create: (_) => _flightStore),
         Provider<LanguageStore>(create: (_) => _languageStore),
       ],
       child: Observer(
@@ -54,7 +59,7 @@ class MyApp extends StatelessWidget {
               // Built-in localization of basic text for Cupertino widgets
               GlobalCupertinoLocalizations.delegate,
             ],
-            home: _userStore.isLoggedIn ? Dashboard() : LoginScreen(),
+            home: _userStore.isLoggedIn ? Landing(0) : LoginScreen(),
           );
         },
       ),
