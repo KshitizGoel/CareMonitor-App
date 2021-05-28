@@ -10,9 +10,9 @@ class FilterWidget extends StatelessWidget {
     final _width = MediaQuery.of(context).size.width;
 
     return Container(
-      width: _width / 2.417,
+     // width: _width / 2.43,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
             filterType,

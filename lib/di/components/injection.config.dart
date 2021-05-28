@@ -10,7 +10,8 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:sembast/sembast.dart' as _i3;
 import 'package:shared_preferences/shared_preferences.dart' as _i7;
 
-import '../../data/local/datasources/post/post_datasource.dart' as _i9;
+import '../../data/local/datasources/details/journey_datasource.dart' as _i9;
+import '../../data/local/datasources/post/post_datasource.dart' as _i15;
 import '../../data/network/apis/journey/journey_api.dart' as _i6;
 import '../../data/network/apis/posts/post_api.dart' as _i14;
 import '../../data/network/dio_client.dart' as _i20;
@@ -23,7 +24,6 @@ import '../../stores/flight/flight_store.dart' as _i12;
 import '../../stores/form/form_store.dart' as _i5;
 import '../../stores/language/language_store.dart' as _i17;
 import '../../stores/post/post_store.dart' as _i18;
-import '../../stores/theme/theme_store.dart' as _i15;
 import '../../stores/user/user_store.dart' as _i16;
 import '../module/local_module.dart' as _i21;
 import '../module/network_module.dart'
@@ -45,20 +45,21 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       () => localModule.provideSharedPreferences(),
       preResolve: true);
   gh.factory<_i8.HistoryRepo>(() => localModule.provideHistoryRepository(
-      get<_i6.HistoryApi>(), get<_i9.PostDataSource>()));
+      get<_i6.HistoryApi>(), get<_i9.JourneyDatasource>()));
   gh.factory<_i10.Dio>(
       () => networkModule.provideDio(get<_i11.SharedPreferenceHelper>()));
   gh.factory<_i12.FlightStore>(() => _i12.FlightStore(get<_i8.HistoryRepo>()));
   gh.factory<_i13.Repository>(() => localModule.provideRepository(
       get<_i14.PostApi>(),
       get<_i11.SharedPreferenceHelper>(),
-      get<_i9.PostDataSource>()));
-  gh.factory<_i15.ThemeStore>(() => _i15.ThemeStore(get<_i13.Repository>()));
+      get<_i15.PostDataSource>()));
   gh.factory<_i16.UserStore>(() => _i16.UserStore(get<_i13.Repository>()));
   gh.factory<_i17.LanguageStore>(
       () => _i17.LanguageStore(get<_i13.Repository>()));
   gh.factory<_i18.PostStore>(() => _i18.PostStore(get<_i13.Repository>()));
-  gh.singleton<_i9.PostDataSource>(_i9.PostDataSource(get<_i3.Database>()));
+  gh.singleton<_i9.JourneyDatasource>(
+      _i9.JourneyDatasource(get<_i3.Database>()));
+  gh.singleton<_i15.PostDataSource>(_i15.PostDataSource(get<_i3.Database>()));
   gh.singleton<_i19.RestClient>(_i19.RestClient());
   gh.singleton<_i11.SharedPreferenceHelper>(
       _i11.SharedPreferenceHelper(get<_i7.SharedPreferences>()));

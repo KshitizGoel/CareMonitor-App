@@ -191,14 +191,11 @@ class _FlightDetailsState extends State<FlightDetails> {
             FilterWidget(
               filterType: "Low price to High",
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: VerticalDivider(
+              VerticalDivider(
                 thickness: 2,
                 color: Colors.grey[100],
               ),
-            ),
-            FilterWidget(
+             FilterWidget(
               filterType: "Advanced Filter",
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:boilerplate/data/local/constants/db_constants.dart';
+import 'package:boilerplate/data/local/datasources/details/journey_datasource.dart';
 import 'package:boilerplate/data/local/datasources/post/post_datasource.dart';
 
 import 'package:boilerplate/data/network/apis/journey/journey_api.dart';
@@ -30,8 +31,8 @@ abstract class LocalModule {
   @factoryMethod
   HistoryRepo provideHistoryRepository(
       HistoryApi historyApi,
-      PostDataSource postDataSource) {
-    return HistoryRepo(historyApi,  postDataSource);
+      JourneyDatasource _journeyDatasource) {
+    return HistoryRepo(historyApi,  _journeyDatasource);
   }
 
   /// A singleton preference provider.
