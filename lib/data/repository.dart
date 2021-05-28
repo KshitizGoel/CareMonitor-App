@@ -66,10 +66,9 @@ class Repository {
       .then((id) => id)
       .catchError((error) => throw error);
 
-
   // Login:---------------------------------------------------------------------
   Future<bool> login(String email, String password) async {
-    return await Future.delayed(Duration(seconds: 2), ()=> true);
+    return await Future.delayed(Duration(seconds: 2), () => true);
   }
 
   Future<void> saveIsLoggedIn(bool value) =>

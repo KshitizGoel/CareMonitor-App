@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/strings.dart';
+import 'package:boilerplate/data/network/apis/history/history_api.dart';
+import 'package:boilerplate/stores/flight/flight_store.dart';
 import 'package:boilerplate/ui/dashboard/dashboard_widget/widgets.dart';
 import 'package:boilerplate/ui/dashboard/scheduled_trip_widget/scheduled_trip.dart';
 import 'package:boilerplate/ui/find_flights/find_flights.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -16,7 +19,19 @@ class _DashboardState extends State<Dashboard> {
 
   int _currentPage = 0;
   late Timer timerAnimation;
+  late FlightStore _flightStore;
   final PageController _pageController = PageController(initialPage: 0);
+
+  HistoryApi historyApi = HistoryApi();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // initializing stores
+    _flightStore = Provider.of<FlightStore>(context);
+   // _flightStore.getFlightDetails();
+  }
 
   List<Widget> _buildPageIndicatorAnimated() {
     List<Widget> list = [];
@@ -24,11 +39,6 @@ class _DashboardState extends State<Dashboard> {
       list.add(i == _currentPage ? _indicator(true) : _indicator(false));
     }
     return list;
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
   }
 
   @override

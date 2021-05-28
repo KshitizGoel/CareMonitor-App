@@ -1,6 +1,10 @@
+import 'package:boilerplate/stores/flight/flight_store.dart';
 import 'package:boilerplate/ui/flight_details/details_widget/journey_details.dart';
 import 'package:boilerplate/ui/flight_details/filter_widget/filter_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 
 class FlightDetails extends StatefulWidget {
   @override
@@ -8,6 +12,19 @@ class FlightDetails extends StatefulWidget {
 }
 
 class _FlightDetailsState extends State<FlightDetails> {
+  // late final Details flightDetails;
+
+  late FlightStore _flightStore;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // initializing stores
+    _flightStore = Provider.of<FlightStore>(context);
+    _flightStore.getFlightDetails();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,30 +37,13 @@ class _FlightDetailsState extends State<FlightDetails> {
             height: 20,
             color: Colors.grey[100]!.withOpacity(0.70),
           ),
-          JourneyDetails(
-              airlinesName: "Emirates Airlines",
-              airlinesCode: "EMR420",
-              transitTime: "4 Hrs 20 Min",
-              departureTime: "4:20 PM",
-              landingTime: "9:06 PM",
-              departureDate: "May 26, 2021",
-              landingDate: "May 27 , 2021"),
-          JourneyDetails(
-              airlinesName: "Emirates Airlines",
-              airlinesCode: "EMR420",
-              transitTime: "4 Hrs 20 Min",
-              departureTime: "4:20 PM",
-              landingTime: "9:06 PM",
-              departureDate: "May 26, 2021",
-              landingDate: "May 27 , 2021"),
-          JourneyDetails(
-              airlinesName: "Emirates Airlines",
-              airlinesCode: "EMR420",
-              transitTime: "4 Hrs 20 Min",
-              departureTime: "4:20 PM",
-              landingTime: "9:06 PM",
-              departureDate: "May 26, 2021",
-              landingDate: "May 27 , 2021"),
+          Observer(builder: (context) {
+            return _flightStore.flightDetails != null
+                ? JourneyDetails(
+                    detailsList: _flightStore.flightDetails,
+                  )
+                : CircularProgressIndicator();
+          }),
         ],
       ),
     );

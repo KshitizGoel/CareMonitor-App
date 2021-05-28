@@ -1,7 +1,10 @@
 import 'package:boilerplate/data/local/constants/db_constants.dart';
 import 'package:boilerplate/data/local/datasources/post/post_datasource.dart';
+import 'package:boilerplate/data/network/apis/data_json/data_json.dart';
+import 'package:boilerplate/data/network/apis/history/history_api.dart';
 import 'package:boilerplate/data/network/apis/posts/post_api.dart';
 import 'package:boilerplate/data/repository.dart';
+import 'package:boilerplate/data/repository/history_repo.dart';
 import 'package:boilerplate/data/sharedpref/shared_preference_helper.dart';
 import 'package:boilerplate/utils/encryption/xxtea.dart';
 import 'package:injectable/injectable.dart';
@@ -22,6 +25,14 @@ abstract class LocalModule {
       SharedPreferenceHelper sharedPreferenceHelper,
       PostDataSource postDataSource) {
     return Repository(postApi, sharedPreferenceHelper, postDataSource);
+  }
+
+  @factoryMethod
+  HistoryRepo provideHistoryRepository(
+      HistoryApi historyApi,
+      FlightDetails flightDetails,
+      PostDataSource postDataSource) {
+    return HistoryRepo(historyApi, flightDetails ,  postDataSource);
   }
 
   /// A singleton preference provider.

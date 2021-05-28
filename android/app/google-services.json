@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "36673561590",
+    "firebase_url": "https://caremonitor-4460e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "caremonitor-4460e",
+    "storage_bucket": "caremonitor-4460e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36673561590:android:7d5ee8fe3fb35f1eb29dd7",
+        "android_client_info": {
+          "package_name": "com.iotecksolutions.todoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36673561590-7i2nag3egjhdcit13th6cku714akiqnl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXG_mVU2Uq5hJsKG9Y7hMFKZHsE5qu5aI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36673561590-7i2nag3egjhdcit13th6cku714akiqnl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
