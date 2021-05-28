@@ -42,7 +42,8 @@ class _FlightDetailsState extends State<FlightDetails> {
                 ? JourneyDetails(
                     detailsList: _flightStore.flightDetails,
                   )
-                : CircularProgressIndicator();
+                : Container(
+                    height: 50, width: 10, child: CircularProgressIndicator());
           }),
         ],
       ),

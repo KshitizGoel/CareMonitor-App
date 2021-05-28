@@ -12,13 +12,13 @@ mixin _$FlightStore on _FlightStore, Store {
   final _$historyAtom = Atom(name: '_FlightStore.history');
 
   @override
-  HistoryList? get history {
+  List<dynamic>? get history {
     _$historyAtom.reportRead();
     return super.history;
   }
 
   @override
-  set history(HistoryList? value) {
+  set history(List<dynamic>? value) {
     _$historyAtom.reportWrite(value, super.history, () {
       super.history = value;
     });

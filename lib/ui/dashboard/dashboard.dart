@@ -1,13 +1,15 @@
 import 'dart:async';
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/strings.dart';
-import 'package:boilerplate/data/network/apis/history/history_api.dart';
+import 'package:boilerplate/data/network/apis/journey/journey_api.dart';
 import 'package:boilerplate/stores/flight/flight_store.dart';
 import 'package:boilerplate/ui/dashboard/dashboard_widget/widgets.dart';
-import 'package:boilerplate/ui/dashboard/scheduled_trip_widget/scheduled_trip.dart';
 import 'package:boilerplate/ui/find_flights/find_flights.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+
+import 'booked_flights_widget/booked_flights.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -30,7 +32,7 @@ class _DashboardState extends State<Dashboard> {
 
     // initializing stores
     _flightStore = Provider.of<FlightStore>(context);
-   // _flightStore.getFlightDetails();
+    _flightStore.getFlightHistory();
   }
 
   List<Widget> _buildPageIndicatorAnimated() {
@@ -60,7 +62,19 @@ class _DashboardState extends State<Dashboard> {
             color: Colors.grey[100],
           ),
           _upcomingTripWidget(),
-          _tripScheduleBar(),
+          Container(
+            height: 180,
+            child: Observer(builder: (context) {
+              return _flightStore.history != null
+                  ? BookedFlights(
+                      bookingsList: _flightStore.history,
+                    )
+                  : Container(
+                      height: 50,
+                      width: 50,
+                      child: CircularProgressIndicator());
+            }),
+          ),
           Container(
             height: 10,
             color: Colors.grey[100],
@@ -366,28 +380,6 @@ class _DashboardState extends State<Dashboard> {
                 style: TextStyle(color: Colors.grey, fontSize: 13),
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _tripScheduleBar() {
-    return Container(
-      height: 150,
-      child: ListView(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          ScheduledTrip(
-            icon: Icons.train,
-            locomotive: " Train",
-            color: Colors.yellow[800]!.withOpacity(0.90),
-          ),
-          ScheduledTrip(
-            icon: Icons.flight_takeoff,
-            locomotive: " Plane",
-            color: Colors.orange[800]!.withOpacity(0.90),
           ),
         ],
       ),

@@ -20,7 +20,7 @@ abstract class _FlightStore with Store {
   _FlightStore(HistoryRepo _historyRepo) : this._historyRepo = _historyRepo;
 
   @observable
-  HistoryList? history;
+  List? history;
 
   @observable
   List? flightDetails;
@@ -39,7 +39,7 @@ abstract class _FlightStore with Store {
   @action
   Future getFlightDetails() async{
     return _historyRepo.gettingFlightDetails().then((value) {
-      flightDetails = value["flight_details"];
+      flightDetails = value;
       print(flightDetails);
     }).catchError((onError){
       print("Getting the error in History Store");

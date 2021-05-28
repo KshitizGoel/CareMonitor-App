@@ -12,26 +12,27 @@ class HistoryApi {
       .reference()
       .child("flight_history"); //database reference object
 
-  Future<HistoryList> getFlightHistory() async {
+  Future<dynamic> getFlightHistory() async {
     // Demonstrates configuring the database directly
 
     return await databaseRef.once().then((DataSnapshot snapshot) {
       print('Flight History Details : ${snapshot.value}');
 
-      return HistoryList.fromJson(snapshot.value);
+      return snapshot.value;
     });
   }
 
+  //===========================================================================
 
   final databaseRefDetails = FirebaseDatabase.instance
       .reference()
       .child("flight_details"); //database reference object
 
-  void getFlightDetailsData() {
+  Future<dynamic> getFlightDetails() async {
     // Demonstrates configuring the database directly
-    databaseRefDetails.once().then((DataSnapshot snapshot) {
-      print('Available Flight Details : ${snapshot.value}');
+
+    return await databaseRefDetails.once().then((DataSnapshot snapshot) {
+      return snapshot.value;
     });
   }
 }
-

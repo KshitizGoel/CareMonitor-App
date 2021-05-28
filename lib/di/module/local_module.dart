@@ -1,7 +1,7 @@
 import 'package:boilerplate/data/local/constants/db_constants.dart';
 import 'package:boilerplate/data/local/datasources/post/post_datasource.dart';
-import 'package:boilerplate/data/network/apis/data_json/data_json.dart';
-import 'package:boilerplate/data/network/apis/history/history_api.dart';
+
+import 'package:boilerplate/data/network/apis/journey/journey_api.dart';
 import 'package:boilerplate/data/network/apis/posts/post_api.dart';
 import 'package:boilerplate/data/repository.dart';
 import 'package:boilerplate/data/repository/history_repo.dart';
@@ -30,9 +30,8 @@ abstract class LocalModule {
   @factoryMethod
   HistoryRepo provideHistoryRepository(
       HistoryApi historyApi,
-      FlightDetails flightDetails,
       PostDataSource postDataSource) {
-    return HistoryRepo(historyApi, flightDetails ,  postDataSource);
+    return HistoryRepo(historyApi,  postDataSource);
   }
 
   /// A singleton preference provider.

@@ -14,7 +14,6 @@ class JourneyDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       physics: NeverScrollableScrollPhysics(),
-
       shrinkWrap: true,
       itemCount: detailsList!.length,
       itemBuilder: (BuildContext context, int index) {
